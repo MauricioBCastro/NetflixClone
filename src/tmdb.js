@@ -12,6 +12,7 @@ const API_BASE = 'https://api.themoviedb.org/3';
 - Documentários
 */
 
+//Requisitando da API externa (TMDB API)
 const basicFetch = async (endpoint) => {
     const req = await fetch(`${API_BASE}${endpoint}`);
     const json = await req.json();
@@ -20,6 +21,7 @@ const basicFetch = async (endpoint) => {
 
 
 export default {
+    //Items requisitados e seus props
     getHomeList: async () => {
         return [
             {
@@ -54,7 +56,7 @@ export default {
             },
             {
                 slug: 'romance',
-                title: 'romance',
+                title: 'Romance',
                 items: await basicFetch(`/discover/movie?with_genres=10749&language=pt-BR&api_key=${API_KEY}`)
             },
             {
