@@ -1,14 +1,18 @@
 import React from "react";
 import './MovieRow.css';
 
-export default ({title, items}) => {
+export default ({title, items = { results: []}}) => {
     return(
-        <div>
+        <div className="movieRow">
             <h2>{title}</h2>
             <div className="movieRow--listarea">
-                {items.results.lenght > 0 && items.results.map((item, key) => (
-                    <img src={`https://imagem.tmdb.org/t/p/w400${item.poster_path}`} alt={item.original_title}/>
-                ))}
+                <div className="movieRow--list">
+                    {items.results.length && items.results.map((item, key) => (
+                        <div key={key} className="movieRow--item">
+                            <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.original_title} />
+                        </div>
+                    ))} 
+                </div>
             </div>
         </div>
     );
