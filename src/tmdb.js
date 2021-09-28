@@ -1,3 +1,5 @@
+import MovieRow from "./components/MovieRow";
+
 const API_KEY = '719456927a9961c0c66d16e6864d503e';
 const API_BASE = 'https://api.themoviedb.org/3';
 
@@ -65,5 +67,24 @@ export default {
                 items: await basicFetch(`/discover/movie?with_genres=99&language=pt-BR&api_key=${API_KEY}`)
             }
         ];
+    },
+    getMovieInfo: async (movieId, type) => {
+        let info = {};
+
+        if(movieId) {
+            switch(type) {
+                case 'movie':
+                    info = await basicFetch(`/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`);
+                break;
+                case 'tv':
+                    info = await basicFetch(`/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`);
+                break;
+                default:
+                    info = null;
+                break;
+            }
+        }
+
+        return info;
     }
 }
