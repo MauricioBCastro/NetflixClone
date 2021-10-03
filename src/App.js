@@ -78,6 +78,13 @@ export default () => {
           <MovieRow key={key} title={item.title} items={item.items} />
         ))}
       </section>
+
+
+      <footer>
+        Made with <span role="img" aria-label="coração">💓</span> by Mauricio Britto de Castro<br/>
+        Image rights for Netflix<br/>
+        Data from Themoviedb.org
+      </footer>
     </div>
   );
 }
